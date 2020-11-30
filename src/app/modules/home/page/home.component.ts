@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  eventsSubject: Subject<void> = new Subject<void>();
+
   public confEnabled;
 
   constructor() { }
@@ -13,8 +16,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  updateConfEnabled(event): void {
+  public updateConfEnabled(event): void {
     this.confEnabled = event;
+  }
+
+  public addCurrency(event): void {
+    this.eventsSubject.next(event);
   }
 
 }

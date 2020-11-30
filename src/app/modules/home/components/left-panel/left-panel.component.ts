@@ -10,10 +10,11 @@ import { CurrencyResponseMapper } from 'src/app/models/response/cripto-currency/
 })
 export class LeftPanelComponent implements OnInit {
   @Output() confEnabledEvent: EventEmitter<any> = new EventEmitter();
-
+  @Output() addCurrencyEvent: EventEmitter<any> = new EventEmitter();
+  
   public currencies;
-
   public confEnabled: boolean;
+  public sCurrency: string;
 
   constructor(
     private coinbaseService: CoinbaseService,
@@ -26,7 +27,11 @@ export class LeftPanelComponent implements OnInit {
 
   private getCurrencies(): any {
     this.coinbaseService.getCurrencies().subscribe(
-      currencies => this.currencies = currencies.map(a => this.currencyResponseMapper.map(a)),
+      currencies => {
+        this.currencies = currencies.map(a => this.currencyResponseMapper.map(a));
+
+        this.sCurrency = this.currencies[0]?.id;
+      },
       err => console.error(err)
     );
   }
@@ -36,5 +41,9 @@ export class LeftPanelComponent implements OnInit {
     this.confEnabled = !this.confEnabled;
 
     this.confEnabledEvent.emit(this.confEnabled);
+  }
+
+  public addCurrency(currencyEvent): void {
+    this.addCurrencyEvent.emit(currencyEvent);
   }
 }
