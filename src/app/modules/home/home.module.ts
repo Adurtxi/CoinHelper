@@ -6,13 +6,13 @@ import { HomeRoutingModule } from './home-routing.module';
 
 import { HomeComponent } from './page/home.component';
 import { InfoPanelComponent } from './components/info-panel/info-panel.component';
-import { RightPanelComponent } from './components/right-panel/right-panel.component';
+import { LeftPanelComponent } from './components/left-panel/left-panel.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     InfoPanelComponent, 
-    RightPanelComponent
+    LeftPanelComponent
   ],
   imports: [
     CommonModule,

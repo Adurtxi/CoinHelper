@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { CoinbaseService } from 'src/app/services/coinbase/coinbase.service';
 import { CurrencyResponseMapper } from 'src/app/models/response/cripto-currency/cripto-currency.response.mapper';
 
 @Component({
-  selector: 'app-right-panel',
-  templateUrl: './right-panel.component.html',
-  styleUrls: ['./right-panel.component.scss']
+  selector: 'app-left-panel',
+  templateUrl: './left-panel.component.html',
+  styleUrls: ['./left-panel.component.scss']
 })
-export class RightPanelComponent implements OnInit {
+export class LeftPanelComponent implements OnInit {
+  @Output() confEnabledEvent: EventEmitter<any> = new EventEmitter();
+
   public currencies;
+
+  public confEnabled: boolean;
 
   constructor(
     private coinbaseService: CoinbaseService,
@@ -25,5 +29,12 @@ export class RightPanelComponent implements OnInit {
       currencies => this.currencies = currencies.map(a => this.currencyResponseMapper.map(a)),
       err => console.error(err)
     );
+  }
+
+  // Habilitar la configuración
+  public enableConf() {
+    this.confEnabled = !this.confEnabled;
+
+    this.confEnabledEvent.emit(this.confEnabled);
   }
 }

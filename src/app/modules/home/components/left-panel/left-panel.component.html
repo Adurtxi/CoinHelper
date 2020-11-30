@@ -1,0 +1,14 @@
+<div class="card no-rounded">
+    <div class="card-body">
+        <button class="btn btn-primary btn-sm btn-block" (click)="enableConf()">
+            Configurar
+            <i class="fas fa-sliders-h ml-2"></i>
+        </button>
+        
+        <hr>
+
+        <p *ngFor="let currency of currencies">
+            {{ currency.id }} | {{ currency.name }}
+        </p>
+    </div>
+</div>

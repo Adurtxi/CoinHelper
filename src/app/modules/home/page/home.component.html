@@ -1,14 +1,12 @@
-<div class="container-fluid">
-    <div class="row justify-content-center">
-
-        <div class="col-lg-8 col-sm-12">
-            <app-info-panel></app-info-panel>
+<div class="container-fluid pl-0">
+    <div class="row justify-content-left">
+        <div class="col-lg-2 col-sm-12 flex-column">
+            <app-left-panel (confEnabledEvent)="updateConfEnabled($event)"></app-left-panel>
         </div>
 
-        <div class="col-lg-2 col-sm-12">
-            <app-right-panel></app-right-panel>
+        <div class="col-lg-10 col-sm-12">
+            <app-info-panel [confEnabled]="confEnabled"></app-info-panel>
         </div>
-
     </div>
 </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CoinbaseService } from 'src/app/services/coinbase/coinbase.service';
 import { BuyPriceResponseMapper } from 'src/app/models/response/buy-price/buy-price.response.mapper';
 
@@ -11,7 +11,7 @@ export class InfoPanelComponent implements OnInit {
 
   public buyPrices = [];
 
-  public confEnabled: boolean;
+  @Input() confEnabled: string;
 
   constructor(
     private coinbaseService: CoinbaseService,
@@ -30,11 +30,6 @@ export class InfoPanelComponent implements OnInit {
         buyPrice => this.buyPrices.push(this.buyPriceResponseMapper.map(buyPrice, c)),
         err => console.error(err)
       ));
-  }
-
-  // Habilitar la configuración
-  public enableConf() {
-    this.confEnabled = !this.confEnabled;
   }
 
   // Borrar criptomoneda
