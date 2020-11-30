@@ -1,0 +1,11 @@
+<div class="form-group">
+    <div class="input-group">
+        <input type="text" class="form-control form-control-lg" placeholder="Buscar compra..." id="search" name="search" (keyup)="filterActivity()"
+            [(ngModel)]="searchQuery">
+        <div class="input-group-append">
+            <button class="btn btn-secondary" (click)="resetInput()">
+                <i class="fas fa-eraser"></i>
+            </button>
+        </div>
+    </div>
+</div>

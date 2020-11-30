@@ -18,6 +18,10 @@ body {
     @extend .rounded-10;
 }
 
+.card-body {
+    @extend .pb-0;
+}
+
 /* ROUNDED */
 .rounded-10 {
     border-radius: 10px !important;

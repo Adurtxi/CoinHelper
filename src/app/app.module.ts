@@ -16,13 +16,13 @@ registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' },

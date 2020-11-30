@@ -1,0 +1,17 @@
+<app-search-input (searchQueryEvent)="updateSearchQuery($event)"></app-search-input>
+
+<div class="row">
+
+    <div class="col-lg-12 col-sm-12 mb-3" *ngFor="let purchase of purchases | searchPurchase: searchQuery">
+        <div class="card">
+            <div class="card-header">
+                {{ purchase.title }}
+            </div>
+            <div class="card-body">
+                <p>{{ purchase.quantity }} BTC</p>
+                <p>{{ purchase.price }} €</p> 
+            </div>
+        </div>
+    </div>
+
+</div>
