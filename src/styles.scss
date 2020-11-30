@@ -22,6 +22,14 @@ body {
     @extend .pb-0;
 }
 
+h1 {
+    font-size: 15px;
+}
+
+hr {
+    @extend .bg-light;
+}
+
 /* ROUNDED */
 .rounded-10 {
     border-radius: 10px !important;
@@ -151,4 +159,8 @@ body {
 .no-rounded-bottom {
     border-bottom-left-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
+}
+
+.pointer {
+    cursor: pointer;
 }

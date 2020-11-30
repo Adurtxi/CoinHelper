@@ -1,9 +1,29 @@
-<div class="card">
-    <div class="card-body">
-        <p *ngFor="let buyPrice of buyPrices">
-            {{ buyPrice?.criptoCurrency }}
-            {{ buyPrice?.currency }}
-            {{ buyPrice?.amount }}€
-        </p>
+<div class="d-flex justify-content-end">
+    <button class="btn btn-primary btn-sm" (click)="enableConf()">
+        Configurar
+        <i class="fas fa-sliders-h ml-2"></i>
+    </button>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-4 col-sm-12 mt-3" *ngFor="let buyPrice of buyPrices">
+
+        <div class="card">
+
+            <div class="card-header d-flex justify-content-between">
+                {{ buyPrice?.criptoCurrency }}
+
+                <ng-container *ngIf="confEnabled">
+                    <i class="fas fa-trash-alt text-danger pointer" (click)="removeCriptoCurrency(buyPrice.id)"></i>
+                </ng-container>
+                
+            </div>
+            <div class="card-body">
+                <p>{{ buyPrice?.amount }}€</p>
+            </div>
+
+        </div>
     </div>
+
 </div>

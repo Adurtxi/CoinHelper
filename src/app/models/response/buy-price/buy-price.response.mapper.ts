@@ -6,9 +6,11 @@ import { BuyPriceResponse } from './buy-price.response';
     providedIn: 'root'
 })
 export class BuyPriceResponseMapper {
-    map(buyPriceResponse: BuyPriceResponse): BuyPrice {
+    map(buyPriceResponse: BuyPriceResponse, criptoCurrency: string): BuyPrice {
         const buyPrice = new BuyPrice();
 
+        
+        buyPrice.id = criptoCurrency;
         buyPrice.criptoCurrency = buyPriceResponse.base;
         buyPrice.currency = buyPriceResponse.currency;
         buyPrice.amount = buyPriceResponse.amount;

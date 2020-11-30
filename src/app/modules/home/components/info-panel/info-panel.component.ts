@@ -11,6 +11,8 @@ export class InfoPanelComponent implements OnInit {
 
   public buyPrices = [];
 
+  public confEnabled: boolean;
+
   constructor(
     private coinbaseService: CoinbaseService,
     private buyPriceResponseMapper: BuyPriceResponseMapper
@@ -20,12 +22,25 @@ export class InfoPanelComponent implements OnInit {
     this.getBuyPrices();
   }
 
+  // Precios de las monedas
   private getBuyPrices(): any {
-    const currencies = ['BTC-EUR', 'ETH-EUR'];
+    const currencies = ['BTC-EUR', 'ETH-EUR', 'ZRX-EUR' , 'EOS-EUR'];
 
     currencies.forEach(c => this.coinbaseService.getBuyPrice(c).subscribe(
-        buyPrice => this.buyPrices.push(this.buyPriceResponseMapper.map(buyPrice)),
+        buyPrice => this.buyPrices.push(this.buyPriceResponseMapper.map(buyPrice, c)),
         err => console.error(err)
       ));
+  }
+
+  // Habilitar la configuración
+  public enableConf() {
+    this.confEnabled = !this.confEnabled;
+  }
+
+  // Borrar criptomoneda
+  public removeCriptoCurrency(id: string){
+    const index = this.buyPrices.findIndex(b => b.id == id);
+
+    this.buyPrices.splice(index, 1);
   }
 }
