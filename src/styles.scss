@@ -13,7 +13,7 @@ body {
     color: #fff;
 }
 
-.card {
+.card, .modal-content {
     @extend .bg-dark;
     @extend .rounded-10;
 }

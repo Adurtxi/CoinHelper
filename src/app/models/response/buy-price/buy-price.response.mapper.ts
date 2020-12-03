@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { BuyPrice } from '../../buy-price.model';
 import { BuyPriceResponse } from './buy-price.response';
 

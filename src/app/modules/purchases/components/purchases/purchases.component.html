@@ -3,13 +3,35 @@
 <div class="row">
 
     <div class="col-lg-12 col-sm-12 mb-3" *ngFor="let purchase of purchases | searchPurchase: searchQuery">
-        <div class="card">
+        <div class="card pointer" (click)="openPurchase(purchase)">
+
             <div class="card-header">
                 {{ purchase.title }}
             </div>
+
             <div class="card-body">
-                <p>{{ purchase.quantity }} BTC</p>
-                <p>{{ purchase.price }} €</p> 
+
+                <div class="row">
+                    <div class="col">
+                        <p>
+                            Comprado: 
+                            <span class="float-right">{{ purchase.cCurrencyQuantity }} BTC</span>
+                        </p>
+                        <p>
+                            Precio: 
+                            <span class="float-right">
+                                {{ purchase.price }} €
+                            </span>
+                        </p>
+                        <p>
+                            Euros invertidos: 
+                            <span class="float-right">
+                                {{ purchase.money }} €
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
