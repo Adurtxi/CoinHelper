@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PurchaseModalComponent } from '../../modals/purchase-modal/purchase-modal.component';
 
 import { Purchase } from 'src/app/models/purchase.model';
+import { NewPurchaseModalComponent } from '../../modals/new-purchase-modal/new-purchase-modal.component';
 
 @Component({
   selector: 'app-purchases',
@@ -13,14 +14,18 @@ import { Purchase } from 'src/app/models/purchase.model';
 export class PurchasesComponent implements OnInit {
   public purchases: Purchase[] = [
     {
+      'id': 1,
       'title': 'Compra BTC',
+      'cCurrency': 'BTC-EUR',
       'cCurrencyQuantity': 0.0001,
       'money': 30,
       'price': 15000,
       'fee': 1.99,
     },
     {
+      'id': 2,
       'title': 'Compra ETH',
+      'cCurrency': 'ETH-EUR',
       'cCurrencyQuantity': 0.1000,
       'price': 500,
       'money': 500,
@@ -41,10 +46,18 @@ export class PurchasesComponent implements OnInit {
   }
 
   // Abrir modal de la compra
-  public openPurchase(purchase){
+  public openPurchaseModal(purchase){
     const modal = this.modalService.open(PurchaseModalComponent);
 
     modal.componentInstance.purchase = purchase;
+
+    modal.result.then(
+      (purchase) => console.log(purchase)).catch((e: any) => console.log()
+    );
+  }
+
+  public openNewPurchaseModal(){
+    const modal = this.modalService.open(NewPurchaseModalComponent);
 
     modal.result.then(
       (purchase) => console.log(purchase)).catch((e: any) => console.log()

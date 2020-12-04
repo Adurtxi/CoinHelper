@@ -11,7 +11,7 @@ export class CoinbaseService {
         private dataService: DataService
     ) { }
 
-    getCurrencies(): Observable<any> {
+    getCryptoCurrencies(): Observable<any> {
         const url = 'https://api.pro.coinbase.com/currencies';
 
         return new Observable((obs) => {

@@ -1,4 +1,4 @@
-export class CurrencyResponse {
+export class CryptoCurrencyResponse {
     id: string;
     name: string;
 }

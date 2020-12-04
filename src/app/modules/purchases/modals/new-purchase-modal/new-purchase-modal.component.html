@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h4 class="modal-title">
+        Añadir compra
+    </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<form #newPurchaseForm="ngForm" (ngSubmit)="onSubmitPurchase(newPurchaseForm)">
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Título</label>
+            <input name="title" type="text" #title="ngModel" [(ngModel)]="purchase.title"
+                class="form-control" placeholder="Titulo de la compra" required>
+            <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+                El título no es válido
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>Criptomoneda</label>
+            <select class="form-control" #cCurrency="ngModel" name="cCurrency"
+                [(ngModel)]="purchase.cCurrency" required>
+                <option [value]="cCurrency.id" *ngFor="let cCurrency of cCurrencies" [selected]="purchase.cCurrency == cCurrency.id">
+                    {{ cCurrency.name }}
+                </option>
+            </select>
+            <small *ngIf="!cCurrency.valid && cCurrency.touched" class="invalid-feedback d-block">
+                Tienes que seleccionar una criptomoneda
+            </small>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="newPurchaseForm.invalid">
+            <span>Añadir compra</span>
+        </button>
+    </div>
+</form>

@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { CoinbaseService } from 'src/app/services/coinbase/coinbase.service';
-import { CurrencyResponseMapper } from 'src/app/models/response/cripto-currency/cripto-currency.response.mapper';
+import { CryptoCurrencyResponseMapper } from 'src/app/models/response/cripto-currency/cripto-currency.response.mapper';
+import { CryptoCurrency } from 'src/app/models/cripto-currency.model';
 
 @Component({
   selector: 'app-left-panel',
@@ -12,13 +13,13 @@ export class LeftPanelComponent implements OnInit {
   @Output() confEnabledEvent: EventEmitter<any> = new EventEmitter();
   @Output() addCurrencyEvent: EventEmitter<any> = new EventEmitter();
   
-  public currencies;
+  public cCurrencies: CryptoCurrency[];
   public confEnabled: boolean;
-  public sCurrency: string;
+  public sCryptoCurrency: string;
 
   constructor(
     private coinbaseService: CoinbaseService,
-    private currencyResponseMapper: CurrencyResponseMapper
+    private cCurrencyResponseMapper: CryptoCurrencyResponseMapper
   ) { }
 
   ngOnInit(): void {
@@ -26,11 +27,11 @@ export class LeftPanelComponent implements OnInit {
   }
 
   private getCurrencies(): any {
-    this.coinbaseService.getCurrencies().subscribe(
-      currencies => {
-        this.currencies = currencies.map(a => this.currencyResponseMapper.map(a));
+    this.coinbaseService.getCryptoCurrencies().subscribe(
+      cCurrencies => {
+        this.cCurrencies = cCurrencies.map(a => this.cCurrencyResponseMapper.map(a));
 
-        this.sCurrency = this.currencies[0]?.id;
+        this.sCryptoCurrency = this.cCurrencies[0]?.id;
       },
       err => console.error(err)
     );

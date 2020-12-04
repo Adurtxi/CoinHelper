@@ -1,9 +1,15 @@
-<app-search-input (searchQueryEvent)="updateSearchQuery($event)"></app-search-input>
+<div class="row align-items-center justify-content-between mr-1">
+    <app-search-input class="col-11" (searchQueryEvent)="updateSearchQuery($event)"></app-search-input>
+
+    <button class="btn btn-primary col-1" (click)="openNewPurchaseModal()">
+        <i class="fas fa-plus"></i>
+    </button>
+</div>
 
 <div class="row">
 
     <div class="col-lg-12 col-sm-12 mb-3" *ngFor="let purchase of purchases | searchPurchase: searchQuery">
-        <div class="card pointer" (click)="openPurchase(purchase)">
+        <div class="card pointer" (click)="openPurchaseModal(purchase)">
 
             <div class="card-header">
                 {{ purchase.title }}
@@ -14,17 +20,17 @@
                 <div class="row">
                     <div class="col">
                         <p>
-                            Comprado: 
+                            Comprado:
                             <span class="float-right">{{ purchase.cCurrencyQuantity }} BTC</span>
                         </p>
                         <p>
-                            Precio: 
+                            Precio:
                             <span class="float-right">
                                 {{ purchase.price }} €
                             </span>
                         </p>
                         <p>
-                            Euros invertidos: 
+                            Euros invertidos:
                             <span class="float-right">
                                 {{ purchase.money }} €
                             </span>

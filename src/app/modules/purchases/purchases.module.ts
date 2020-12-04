@@ -11,6 +11,7 @@ import { PurchasesComponent } from './components/purchases/purchases.component';
 import { SearchPurchasePipe } from './pipes/search.pipe';
 
 import { PurchaseModalComponent } from './modals/purchase-modal/purchase-modal.component';
+import { NewPurchaseModalComponent } from './modals/new-purchase-modal/new-purchase-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PurchaseModalComponent } from './modals/purchase-modal/purchase-modal.c
     PurchasesComponent,
     SearchPurchasePipe,
     PurchaseModalComponent,
+    NewPurchaseModalComponent,
   ],
   imports: [
     CommonModule,

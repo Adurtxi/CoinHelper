@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 
-import { Currency } from '../../cripto-currency.model';
-import { CurrencyResponse } from './cripto-currency.response';
+import { CryptoCurrency } from '../../cripto-currency.model';
+import { CryptoCurrencyResponse } from './cripto-currency.response';
 
 @Injectable({
     providedIn: 'root'
 })
-export class CurrencyResponseMapper {
-    map(currencyResponse: CurrencyResponse): Currency {
-        const currency = new Currency();
+export class CryptoCurrencyResponseMapper {
+    map(currencyResponse: CryptoCurrencyResponse): CryptoCurrency {
+        const cCurrency = new CryptoCurrency();
 
-        currency.id = currencyResponse.id;
-        currency.name = currencyResponse.name;
+        cCurrency.id = currencyResponse.id;
+        cCurrency.name = currencyResponse.name;
 
-        return currency;
+        return cCurrency;
     }
 }
