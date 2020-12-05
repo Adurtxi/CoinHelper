@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable, Subscription } from 'rxjs';
 
 import { PurchaseModalComponent } from '../../modals/purchase-modal/purchase-modal.component';
 
 import { Purchase } from 'src/app/models/purchase.model';
-import { NewPurchaseModalComponent } from '../../modals/new-purchase-modal/new-purchase-modal.component';
 
 @Component({
   selector: 'app-purchases',
@@ -12,6 +12,9 @@ import { NewPurchaseModalComponent } from '../../modals/new-purchase-modal/new-p
   styleUrls: ['./purchases.component.scss']
 })
 export class PurchasesComponent implements OnInit {
+  @Input() openNewPurchaseModalObservable: Observable<string>;
+  @Input() newPurchaseEvent: Observable<Purchase>;
+
   public purchases: Purchase[] = [
     {
       'id': 1,
@@ -39,7 +42,11 @@ export class PurchasesComponent implements OnInit {
     private modalService: NgbModal
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.newPurchaseEvent.subscribe((purchase) => {
+      this.purchases.unshift(purchase);
+    });
+  }
 
   public updateSearchQuery(event): void {
     this.searchQuery = event;
@@ -56,25 +63,6 @@ export class PurchasesComponent implements OnInit {
     );
   }
 
-  public openNewPurchaseModal(){
-    const modal = this.modalService.open(NewPurchaseModalComponent);
-
-    modal.result.then(
-      (purchase) => console.log(purchase)).catch((e: any) => console.log()
-    );
-  }
-
   public calculateProfit(purchase) {
   }
-
-  // Calcular cantidad de criptomonedas después de quitar la comisión
-  private cFinalCriptoCurrency(price: number, money: number) {
-    return (money - this.cFee(money)) / price;
-  }
-
-  // Calcular comisión
-  private cFee(money: number) {
-    return (money <= 10) ? 0.99 : (money <= 25) ? 1.49 : (money <= 50) ? 1.99 : money * 0.0384;
-  }
-
 }

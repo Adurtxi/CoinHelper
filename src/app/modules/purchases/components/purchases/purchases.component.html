@@ -1,10 +1,4 @@
-<div class="row align-items-center justify-content-between mr-1">
-    <app-search-input class="col-11" (searchQueryEvent)="updateSearchQuery($event)"></app-search-input>
-
-    <button class="btn btn-primary col-1" (click)="openNewPurchaseModal()">
-        <i class="fas fa-plus"></i>
-    </button>
-</div>
+<app-search-input class="col-11" (searchQueryEvent)="updateSearchQuery($event)"></app-search-input>
 
 <div class="row">
 
@@ -33,6 +27,12 @@
                             Euros invertidos:
                             <span class="float-right">
                                 {{ purchase.money }} €
+                            </span>
+                        </p>
+                        <p>
+                            Comisión:
+                            <span class="float-right">
+                                {{ purchase.fee }} €
                             </span>
                         </p>
                     </div>

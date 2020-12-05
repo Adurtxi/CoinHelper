@@ -1,11 +1,12 @@
-<div class="container-fluid mt-4">
-    <div class="row justify-content-center">
-
-        <div class="col-lg-8 col-sm-12">
-            <app-purchases></app-purchases>
-        </div>
+<div class="container-fluid pl-0">
+    <div class="row h-100">
 
         <div class="col-lg-2 col-sm-12">
+            <app-purchases-left-panel (newPurchaseEvent)="newPurchaseEvent($event)"></app-purchases-left-panel>
+        </div>
+
+        <div class="col-lg-9 col-sm-12 mt-4">
+            <app-purchases [newPurchaseEvent]="newPurchaseEventSubject.asObservable()"></app-purchases>
         </div>
 
     </div>

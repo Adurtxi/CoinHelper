@@ -23,10 +23,10 @@ export class LeftPanelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCurrencies();
+    this.getCryptoCurrencies();
   }
 
-  private getCurrencies(): any {
+  private getCryptoCurrencies(): void {
     this.coinbaseService.getCryptoCurrencies().subscribe(
       cCurrencies => {
         this.cCurrencies = cCurrencies.map(a => this.cCurrencyResponseMapper.map(a));
@@ -38,7 +38,7 @@ export class LeftPanelComponent implements OnInit {
   }
 
   // Habilitar la configuración
-  public enableConf() {
+  public enableConf(): void {
     this.confEnabled = !this.confEnabled;
 
     this.confEnabledEvent.emit(this.confEnabled);

@@ -12,6 +12,7 @@ import { SearchPurchasePipe } from './pipes/search.pipe';
 
 import { PurchaseModalComponent } from './modals/purchase-modal/purchase-modal.component';
 import { NewPurchaseModalComponent } from './modals/new-purchase-modal/new-purchase-modal.component';
+import { PurchasesLeftPanelComponent } from './components/left-panel/left-panel.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NewPurchaseModalComponent } from './modals/new-purchase-modal/new-purch
     SearchInputComponent,
     PurchasesComponent,
     SearchPurchasePipe,
+    PurchasesLeftPanelComponent,
     PurchaseModalComponent,
     NewPurchaseModalComponent,
   ],

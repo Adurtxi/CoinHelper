@@ -8,7 +8,8 @@ $fa-font-path: "/assets/webfonts";
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
 
-body {
+html, body {
+    height: 100%;
     background-color: #292929;
     color: #fff;
 }
