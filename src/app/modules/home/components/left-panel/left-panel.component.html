@@ -1,4 +1,4 @@
-<div class="card no-rounded">
+<div class="card no-rounded h-100">
     <div class="card-body">
         <button class="btn btn-primary btn-block mb-3" (click)="enableConf()">
             Configurar
@@ -19,11 +19,6 @@
                 </small>
             </p>
             
-        </div>
-        
-        <div class="d-flex justify-content-between" *ngFor="let currency of cCurrencies">
-            <p>{{ currency.name }}</p>
-            <p class="font-weight-bold text-sm">{{ currency.id }}</p>
         </div>
     </div>
 </div>
