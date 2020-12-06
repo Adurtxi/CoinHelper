@@ -15,7 +15,7 @@
                     <div class="col">
                         <p>
                             Comprado:
-                            <span class="float-right">{{ purchase.cCurrencyQuantity }} BTC</span>
+                            <span class="float-right">{{ purchase.cCurrencyQuantity }} {{ purchase.cCurrency }}</span>
                         </p>
                         <p>
                             Precio:
@@ -33,6 +33,12 @@
                             Comisión:
                             <span class="float-right">
                                 {{ purchase.fee }} €
+                            </span>
+                        </p>
+                        <p>
+                            Beneficio:
+                            <span class="float-right">
+                                {{ calculateProfit(purchase) }} €
                             </span>
                         </p>
                     </div>
